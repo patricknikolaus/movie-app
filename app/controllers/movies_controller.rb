@@ -9,5 +9,9 @@ class MoviesController < ApplicationController
     render json: {movies: all_movies}
   end
 
-
+  def choose_an_actor
+    title = params[:title]
+    movie = Movie.find_by(title: title)
+    render json: {movie: movie}
+  end
 end
