@@ -1,2 +1,2 @@
-actor = Actor.new({first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock"})
+actor = Actor.new({first_name: "Robert", last_name: "Downey, JR", known_for: "Iron Man"})
 actor.save
