@@ -5,4 +5,5 @@ post "/pick_an_actor", controller: "movies", action: "choose_an_actor"
 
 get "/actor", controller: "actors", action: "show"
 get "/actor/:id", controller: "actors", action: "show"
+post "/actor", controller: "actors", action: "show"
 end
