@@ -11,9 +11,11 @@ class ActorsController < ApplicationController
 
   def create
     actor = Actor.new(
-      title: params[:title],
-      year: params[:year],
-      plot: params[:plot]
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      known_for: params[:known_for],
+      gender: params[:gender],
+      age: params[:age]
     )
     actor.save
     render json: actor.as_json
@@ -21,9 +23,11 @@ class ActorsController < ApplicationController
 
   def update
     actor = Actor.find_by(id: params[:id])
-    actor.title = params[:title] || actor.title
-    actor.year = params[:year] || actor.year
-    actor.plot = params[:plot] || actor.plot
+    actor.first_name = params[:first_name] || actor.first_name 
+    actor.last_name = params[:last_name] || actor.last_name
+    actor.known_for = params[:known_for] || actor.known_for
+    actor.gender = params[:gender] || actor.genter
+    actor.age = params[:age] || actor.age
     actor.save
     render json: actor.as_json
   end
