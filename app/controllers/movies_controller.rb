@@ -1,17 +1,36 @@
 class MoviesController < ApplicationController
-  def get_one_movie
-    one_movie = Movie.first
-    render json: {movie: one_movie}
+  def index
+    movies = Movie.all
+    render json: movies.as_json
   end
 
-  def get_all_movies
-    all_movies = Movie.all
-    render json: {movies: all_movies}
+  def show
+    movie = Movie.find_by(id: params[:id])
+    render json: movie.as_json
   end
 
-  def choose_an_actor
-    title = params[:title]
-    movie = Movie.find_by(title: title)
-    render json: {movie: movie}
+  def create
+    movie = Movie.new(
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plot]
+    )
+    movie.save
+    render json: movie.as_json
+  end
+
+  def update
+    movie = Movie.find_by(id: params[:id])
+    movie.title = params[:title] || movie.title
+    movie.year = params[:year] || movie.year
+    movie.plot = params[:plot] || movie.plot
+    movie.save
+    render json: movie.as_json
+  end
+
+  def destroy
+    movie = Movie.find_by(id: params[:id])
+    movie.destroy
+    render json: {message: "You just deleted this movie!", movie: movie.as_json}
   end
 end

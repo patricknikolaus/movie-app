@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-get "/one_movie", controller: "movies", action: "get_one_movie"
-get "/all_movies", controller: "movies", action: "get_all_movies"
-post "/pick_an_actor", controller: "movies", action: "choose_an_actor"
+get "/movies", controller: "movies", action: "index"
+get "/movies/:id", controller: "movies", action: "show"
+post "/movies", controller: "movies", action: "create"
+patch "/movies/:id", controller: "movies", action: "update"
+delete "/movies/:id", controller: "movies", action: "destroy"
 
-get "/actor", controller: "actors", action: "show"
-get "/actor/:id", controller: "actors", action: "show"
-post "/actor", controller: "actors", action: "show"
+get "/actors", controller: "actors", action: "index"
+get "/actors/:id", controller: "actors", action: "show"
+post "/actors", controller: "actors", action: "create"
+patch "/actors/:id", controller: "actors", action: "update"
+delete "/actors/:id", controller: "actors", action: "destroy"
 end
